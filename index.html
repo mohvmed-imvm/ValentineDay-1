@@ -101,6 +101,7 @@ body {
 }
 
 .number {
+    opacity: 0;
     position: relative;
     z-index: 1;
     font-family: Georgia, "Times New Roman", serif;
@@ -109,21 +110,17 @@ body {
     line-height: 1;
     color: var(--cream);
     text-shadow: 0 0 20px rgba(255,255,255,.9), 0 0 60px rgba(241,183,204,.5);
-    animation: numberIn .8s ease;
-    isolation: isolate;
-    will-change: transform, filter, opacity;
+    animation: numberIn .8s ease forwards;
 }
 
 @keyframes numberIn {
     0% {
         opacity: 0;
         transform: scale(1.8);
-        filter: none;
     }
     100% {
         opacity: 1;
         transform: scale(1);
-        filter: blur(0);
     }
     /*        filter: blur(15px);*/
 }
