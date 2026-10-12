@@ -1,146 +1,89 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
-<meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
-<meta name="google" content="notranslate">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Surprise(2)</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <meta name="theme-color" content="#10070d">
+  <title>Anniversary Surprise | 4U celebrations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=GFS+Didot&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="https://mohvmed-imvm.github.io/4U-celebration/" aria-label="4U celebrations home">
+      <span class="brand-mark">4U</span><span class="brand-name">celebrations</span>
+    </a>
+    <nav class="header-actions" aria-label="Main navigation">
+      <button class="about-button" id="aboutButton" type="button" data-ar="عن النموذج" data-en="About this demo">عن النموذج</button>
+      <a class="header-order" id="headerOrder" href="https://wa.me/201040275280" target="_blank" rel="noopener noreferrer" data-ar="اطلب موقعك" data-en="Order yours">اطلب موقعك</a>
+    </nav>
+  </header>
 
-<audio id="birthdayMusic" src="birthday.mp3" loop></audio>
+  <div class="modal-overlay" id="aboutModal" aria-hidden="true">
+    <section class="about-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModal" type="button" aria-label="إغلاق">×</button>
+      <p class="eyebrow" data-ar="هدية مختلفة" data-en="A gift to remember">هدية مختلفة</p>
+      <h2 id="modalTitle" data-ar="التصميم اللي بتشوفه دلوقتي هو نموذج تجريبي من 4U celebrations، معمول عشان تاخد فكرة عن شكل الهدية." data-en="The design you see now is a prototype from 4U Celebrations, created to give you an idea of ​​what the gift looks like.">التصميم اللي بتشوفه دلوقتي هو نموذج تجريبي من 4U celebrations، معمول عشان تاخد فكرة عن شكل الهدية.</h2>
+      <p data-ar="كل حاجة قابلة للتخصيص!
+        الاسم والكلام والصور والموسيقى والألوان والتفاصيل كلها هتتغير حسب رغبتك." data-en="Everything is customizable!
+        Names, text, images, music, colors, and details can all be changed to suit your preferences.">كل حاجة قابلة للتخصيص!
+        الاسم والكلام والصور والموسيقى والألوان والتفاصيل كلها هتتغير حسب رغبتك.</p>
+      <a class="modal-order" id="modalOrderButton" href="https://wa.me/201040275280" target="_blank" rel="noopener noreferrer" data-ar="اطلب صفحتك على واتساب" data-en="Order your page on WhatsApp">اطلب صفحتك على واتساب</a>
+    </section>
+  </div>
 
-<!-- INTRO: NO 4U ABOVE COUNTDOWN -->
+  <audio id="birthdayMusic" src="birthay.mp3" loop preload="none"></audio>
 
-<div class="intro" id="intro">
-    <div class="glow"></div>
+  <section class="intro" id="intro" aria-label="Introduction">
+    <div class="intro-glow"></div>
+    <p class="intro-text">...something special is waiting u</p>
+    <div class="countdown-word" id="number">5</div>
+  </section>
 
-    <div class="intro-text" id="introText">
-        ...something special is waiting u 
-    </div>
-
-    <div class="number" id="number">5</div>
-</div>
-
-<!-- MAIN PAGE -->
-
-<main class="main" id="main">
-
-    <!-- HEARTS STAY INSIDE THIS CLIPPED LAYER -->
+  <main class="main" id="main">
     <div class="heart-layer" id="heartLayer" aria-hidden="true"></div>
-
     <div class="content">
+      <p class="top-label" data-ar="أجمل حكاية" data-en="sweetest story">أجمل حكاية</p>
+      <h1 id="pageHeading" data-ar="كل سنة وإنتوا مع بعض" data-en="Another year, together">كل سنة وإنتوا مع بعض</h1>
+      <div class="subtitle" id="subtitle" data-ar="سنة جديدة من الحب والذكريات الحلوة، ولسه أجمل أيامكم جاية ♡" data-en="Another year of love and beautiful memories — and your best days are still ahead ♡">سنة جديدة من الحب والذكريات الحلوة، ولسه أجمل أيامكم جاية ♡</div>
 
-        <h1 id="pageHeading">.............</h1>
-
-        <div class="subtitle" id="subtitle">
-.......
+      <div class="gift-area" id="giftArea">
+        <div class="bouquet" id="bouquet" aria-hidden="true">
+          <div class="stem stem-one"></div><div class="stem stem-two"></div><div class="stem stem-three"></div><div class="stem stem-four"></div><div class="stem stem-five"></div>
+          <div class="leaf leaf-one"></div><div class="leaf leaf-two"></div><div class="leaf leaf-three"></div><div class="leaf leaf-four"></div><div class="leaf leaf-five"></div>
+          <div class="flower flower-one"><img src="photo1.jpg" alt="" onerror="this.style.display='none'"><span>♡</span></div>
+          <div class="flower flower-two"><img src="photo2.jpg" alt="" onerror="this.style.display='none'"><span>♡</span></div>
+          <div class="flower flower-three"><img src="photo3.jpg" alt="" onerror="this.style.display='none'"><span>♡</span></div>
+          <div class="flower flower-four"><img src="photo4.jpg" alt="" onerror="this.style.display='none'"><span>♡</span></div>
+          <div class="flower flower-five"><img src="photo5.jpg" alt="" onerror="this.style.display='none'"><span>♡</span></div>
+          <div class="flower flower-six"><img src="photo5.jpg" alt="" onerror="this.style.display='none'"><span>♡</span></div>
+          <div class="wrap-back"></div><div class="wrap-left"></div><div class="wrap-right"></div><div class="wrap-front"></div><div class="wrap-band"></div><div class="wrap-bow"></div>
         </div>
 
-        <!-- GIFT AREA -->
-
-        <div class="gift-area" id="giftArea">
-
-            <!-- BOUQUET -->
-
-            <div class="bouquet" id="bouquet">
-
-                <div class="stems">
-                    <span class="stem"></span>
-                    <span class="stem"></span>
-                    <span class="stem"></span>
-                    <span class="stem"></span>
-                    <span class="stem"></span>
-
-                    <span class="leaf l1"></span>
-                    <span class="leaf l2"></span>
-                    <span class="leaf l3"></span>
-                    <span class="leaf l4"></span>
-                </div>
-
-                <div class="wrap-back"></div>
-
-                <div class="flower top-left">
-                    <img src="photo1.jpg" alt="Our memory 1">
-                </div>
-
-                <div class="flower top-right">
-                    <img src="photo2.jpg" alt="Our memory 2">
-                </div>
-
-                <div class="flower left">
-                    <img src="photo3.jpg" alt="Our memory 3">
-                </div>
-
-                <div class="flower right">
-                    <img src="photo4.jpg" alt="Our memory 4">
-                </div>
-
-                <div class="flower center">
-                    <img src="photo5.jpg" alt="Our favorite memory">
-                </div>
-
-                <div class="wrap-left"></div>
-                <div class="wrap-right"></div>
-                <div class="wrap-front"></div>
-
-                <div class="ribbon-band"></div>
-                <div class="ribbon-bow"></div>
-                <div class="ribbon-knot"></div>
-
-            </div>
-
-            <!-- CLICK THE BOX ONLY -->
-
-            <div
-                class="gift-box"
-                id="giftBox"
-                role="button"
-                tabindex="0"
-                aria-label="افتح الهدية"
-            >
-                <div class="lid">
-                    <div class="ribbon"></div>
-                </div>
-
-                <div class="box-body">
-                    <div class="ribbon-vertical"></div>
-                </div>
-            </div>
-
-            <div class="gift-text" id="giftText">
-.........
-            </div>
-
+        <div class="gift-box" id="giftBox" role="button" tabindex="0" aria-label="افتح الهدية" data-ar-label="افتح الهدية" data-en-label="Open the gift">
+          <div class="gift-lid" id="giftLid"><span></span></div>
+          <div class="gift-body"><span class="gift-ribbon"></span><span class="gift-bow"></span></div>
         </div>
+        <p class="gift-text" id="giftText" data-ar="افتحوا الهدية ♡" data-en="Open your little gift ♡">افتحوا الهدية ♡</p>
+      </div>
 
-        <!-- MESSAGE -->
+      <section class="message" id="message" aria-live="polite">
+        <p class="message-kicker" data-ar="حكايتكم لسه بتتحكي" data-en="Your story is still unfolding">حكايتكم لسه بتتحكي</p>
+        <h2 data-ar="لأجمل اتنين.. كل سنة وحبكم بيكبر" data-en="To my favorite two — may your love keep growing">لأجمل اتنين.. كل سنة وحبكم بيكبر</h2>
+        <p data-ar="كل سنة وإنتوا سند وفرحة وونس لبعض، وكل ذكرى جديدة تكون أحلى من اللي قبلها. ربنا يديم بينكم المودة والضحكة الحلوة، ويكتبلكم سنين كتير مليانة حب وراحة بال. دي مجرد صفحة صغيرة، لكن أجمل حكاية هي اللي بتعيشوها كل يوم سوا. ♡" data-en="Another year of being each other's comfort, joy, and safe place. May every new memory be sweeter than the last, and may your days together be filled with laughter, kindness, and love. This is only a little page, but the most beautiful story is the one you keep writing together every day. ♡">كل سنة وإنتوا سند وفرحة وونس لبعض، وكل ذكرى جديدة تكون أحلى من اللي قبلها. ربنا يديم بينكم المودة والضحكة الحلوة، ويكتبلكم سنين كتير مليانة حب وراحة بال. دي مجرد صفحة صغيرة، لكن أجمل حكاية هي اللي بتعيشوها كل يوم سوا. ♡</p>
+        <div class="message-signature" data-ar="مع كل الحب ♡" data-en="With all the love ♡">مع كل الحب ♡</div>
+      </section>
 
-        <section class="message" id="message">
-
-            <h2>..............</h2>
-
-            <p>
-
-            </p>
-
-        </section>
-
-        <!-- FOOTER -->
-
-        <footer class="site-footer">
-            <span>Made with</span>
-            <span>4U</span>
-        </footer>
-
+      <section class="order-section" id="order">
+        <p data-ar="عايز تعمل مفاجأة بالشكل ده؟" data-en="Want to make a surprise like this?">عايز تعمل مفاجأة بالشكل ده؟</p>
+        <a class="order-button" id="orderButton" href="https://wa.me/201040275280?text=عايز%20أعمل%20صفحة%20مناسبة%20من%204U%20celebrations" target="_blank" rel="noopener noreferrer" data-ar="اطلب موقعك دلوقتي" data-en="Create your own site">اطلب موقعك دلوقتي</a>
+      </section>
+      <footer class="site-footer">made with 4U</footer>
     </div>
-</main>
-
-<script src="script.js"></script>
-
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>
