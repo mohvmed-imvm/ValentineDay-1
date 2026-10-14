@@ -1,7 +1,7 @@
 
 /* 4U celebrations — Anniversary Template */
 
-/* ELEMENTS */
+/* ELEMENT */
 const intro = document.getElementById("intro");
 const number = document.getElementById("number");
 const main = document.getElementById("main");
