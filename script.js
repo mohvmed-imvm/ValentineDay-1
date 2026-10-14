@@ -23,13 +23,42 @@ const headerOrder = document.getElementById("headerOrder");
 const pageHeading = document.getElementById("pageHeading");
 const subtitle = document.getElementById("subtitle");
 
+const customizationSection = document.getElementById("customizationSection");
+const husbandName = document.getElementById("husbandName");
+const wifeName = document.getElementById("wifeName");
+const anniversaryDate = document.getElementById("anniversaryDate");
+const personalMessage = document.getElementById("personalMessage");
+const customizationDetails = document.getElementById("customizationDetails");
+
+const orderReferenceElement = document.getElementById("orderReference");
+const copyOrderDetailsButton = document.getElementById("copyOrderDetails");
+const sendOrderWhatsAppButton = document.getElementById("sendOrderWhatsApp");
+
 const WHATSAPP_NUMBER = "201040275280";
 const LANGUAGE_KEY = "4u-language";
+const ORDER_REFERENCE_KEY = "4u-anniversary-order-reference";
 
 let giftOpened = false;
 let heartsInterval = null;
 let lastFocusedElement = null;
 let currentLanguage = "ar";
+
+/* ORDER REFERENCE */
+function getOrderReference() {
+    let reference = sessionStorage.getItem(ORDER_REFERENCE_KEY);
+
+    if (!reference) {
+        const randomPart = Math.random()
+            .toString(36)
+            .substring(2, 8)
+            .toUpperCase();
+
+        reference = "4U-ANN-" + randomPart;
+        sessionStorage.setItem(ORDER_REFERENCE_KEY, reference);
+    }
+
+    return reference;
+}
 
 /* LANGUAGE */
 function applyLanguage() {
@@ -47,24 +76,39 @@ function applyLanguage() {
     if (giftBox) {
         giftBox.setAttribute(
             "aria-label",
-            currentLanguage === "ar" ? "افتح الهدية" : "Open the gift"
+            currentLanguage === "ar"
+                ? giftBox.dataset.arLabel
+                : giftBox.dataset.enLabel
         );
     }
+
+    const placeholderFields = [
+        husbandName,
+        wifeName,
+        anniversaryDate,
+        personalMessage,
+        customizationDetails
+    ];
+
+    placeholderFields.forEach(field => {
+        if (!field) return;
+
+        const placeholder = currentLanguage === "ar"
+            ? field.dataset.placeholderAr
+            : field.dataset.placeholderEn;
+
+        if (placeholder) {
+            field.placeholder = placeholder;
+        }
+    });
 
     document.title = currentLanguage === "ar"
         ? "مفاجأة ذكرى زواج | 4U celebrations"
         : "Anniversary Surprise | 4U celebrations";
 
-    const orderMessage = currentLanguage === "ar"
-        ? "عايز أعمل صفحة مناسبة من 4U celebrations"
-        : "I would like to order a custom occasion page from 4U celebrations";
-
-    const whatsappURL =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(orderMessage)}`;
-
-    [orderButton, headerOrder, modalOrderButton].forEach(link => {
-        if (link) link.href = whatsappURL;
-    });
+    if (orderReferenceElement) {
+        orderReferenceElement.textContent = getOrderReference();
+    }
 }
 
 applyLanguage();
@@ -124,6 +168,152 @@ document.addEventListener("keydown", event => {
         closeAboutModal();
     }
 });
+
+/* ORDER CUSTOMIZATION */
+function scrollToCustomization(event) {
+    if (event) event.preventDefault();
+
+    if (aboutModal && aboutModal.classList.contains("active")) {
+        closeAboutModal();
+    }
+
+    if (customizationSection) {
+        customizationSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+}
+
+/* Header, modal, and bottom order buttons scroll to customization */
+[headerOrder, modalOrderButton, orderButton].forEach(button => {
+    if (button) {
+        button.addEventListener("click", scrollToCustomization);
+    }
+});
+
+/* BUILD ORDER MESSAGE */
+function getOrderMessage() {
+    const isArabic = currentLanguage === "ar";
+
+    const valueOrDefault = (field, arabicDefault, englishDefault) => {
+        const value = field ? field.value.trim() : "";
+        return value || (isArabic ? arabicDefault : englishDefault);
+    };
+
+    const greeting = isArabic
+        ? "أهلا 4U Celebrations,"
+        : "Hello 4U Celebrations,";
+
+    const orderLabel = isArabic ? "رقم الطلب:" : "Order number:";
+    const templateLabel = isArabic ? "اسم القالب:" : "Template name:";
+    const husbandLabel = isArabic ? "اسم الزوج:" : "Husband's name:";
+    const wifeLabel = isArabic ? "اسم الزوجة:" : "Wife's name:";
+    const dateLabel = isArabic
+        ? "تاريخ ذكرى الزواج:"
+        : "Anniversary date:";
+    const messageLabel = isArabic
+        ? "الرسالة الشخصية:"
+        : "Personal message:";
+    const detailsLabel = isArabic
+        ? "ملاحظات إضافية:"
+        : "Additional notes:";
+
+    const templateName = isArabic
+        ? "قالب ذكرى الزواج"
+        : "Anniversary Template";
+
+    const husband = valueOrDefault(
+        husbandName,
+        "لم يُذكر",
+        "Not provided"
+    );
+
+    const wife = valueOrDefault(
+        wifeName,
+        "لم يُذكر",
+        "Not provided"
+    );
+
+    const date = valueOrDefault(
+        anniversaryDate,
+        "لم يُذكر",
+        "Not provided"
+    );
+
+    const personal = valueOrDefault(
+        personalMessage,
+        "لم تُذكر",
+        "Not provided"
+    );
+
+    const details = valueOrDefault(
+        customizationDetails,
+        "لا توجد",
+        "None"
+    );
+
+    return [
+        greeting,
+        "",
+        `${orderLabel} ${getOrderReference()}`,
+        `${templateLabel} ${templateName}`,
+        "",
+        `${husbandLabel} ${husband}`,
+        `${wifeLabel} ${wife}`,
+        `${dateLabel} ${date}`,
+        `${messageLabel} ${personal}`,
+        `${detailsLabel} ${details}`
+    ].join("\n");
+}
+
+/* COPY ORDER DETAILS */
+if (copyOrderDetailsButton) {
+    copyOrderDetailsButton.addEventListener("click", async () => {
+        const text = getOrderMessage();
+        let copied = false;
+
+        try {
+            await navigator.clipboard.writeText(text);
+            copied = true;
+        } catch (error) {
+            const temporaryTextarea = document.createElement("textarea");
+            temporaryTextarea.value = text;
+            temporaryTextarea.style.position = "fixed";
+            temporaryTextarea.style.opacity = "0";
+
+            document.body.appendChild(temporaryTextarea);
+            temporaryTextarea.select();
+
+            try {
+                copied = document.execCommand("copy");
+            } catch (copyError) {
+                copied = false;
+            }
+
+            temporaryTextarea.remove();
+        }
+
+        if (!copied) {
+            alert(
+                currentLanguage === "ar"
+                    ? "تعذر النسخ، حاول مرة أخرى"
+                    : "Could not copy. Please try again."
+            );
+        }
+    });
+}
+
+/* SEND ORDER THROUGH WHATSAPP */
+if (sendOrderWhatsAppButton) {
+    sendOrderWhatsAppButton.addEventListener("click", () => {
+        const messageText = getOrderMessage();
+        const whatsappURL =
+            `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(messageText)}`;
+
+        window.open(whatsappURL, "_blank", "noopener,noreferrer");
+    });
+}
 
 /* CINEMATIC INTRO */
 const introWords = ["Happy", "Anniversary", "To", "You", "♡"];
