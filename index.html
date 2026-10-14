@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -18,7 +19,7 @@
     </a>
     <nav class="header-actions" aria-label="Main navigation">
       <button class="about-button" id="aboutButton" type="button" data-ar="عن النموذج" data-en="About this demo">عن النموذج</button>
-      <a class="header-order" id="headerOrder" href="https://wa.me/201040275280" target="_blank" rel="noopener noreferrer" data-ar="اطلب موقعك" data-en="Order yours">اطلب موقعك</a>
+      <a class="header-order" id="headerOrder" href="#customizationSection" data-ar="اطلب موقعك" data-en="Order yours">اطلب موقعك</a>
     </nav>
   </header>
 
@@ -26,16 +27,13 @@
     <section class="about-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button class="modal-close" id="closeModal" type="button" aria-label="إغلاق">×</button>
       <p class="eyebrow" data-ar="هدية مختلفة" data-en="A gift to remember">هدية مختلفة</p>
-      <h2 id="modalTitle" data-ar="التصميم اللي بتشوفه دلوقتي هو نموذج تجريبي من 4U celebrations، معمول عشان تاخد فكرة عن شكل الهدية." data-en="The design you see now is a prototype from 4U Celebrations, created to give you an idea of ​​what the gift looks like.">التصميم اللي بتشوفه دلوقتي هو نموذج تجريبي من 4U celebrations، معمول عشان تاخد فكرة عن شكل الهدية.</h2>
-      <p data-ar="كل حاجة قابلة للتخصيص!
-        الاسم والكلام والصور والموسيقى والألوان والتفاصيل كلها هتتغير حسب رغبتك." data-en="Everything is customizable!
-        Names, text, images, music, colors, and details can all be changed to suit your preferences.">كل حاجة قابلة للتخصيص!
-        الاسم والكلام والصور والموسيقى والألوان والتفاصيل كلها هتتغير حسب رغبتك.</p>
-      <a class="modal-order" id="modalOrderButton" href="https://wa.me/201040275280" target="_blank" rel="noopener noreferrer" data-ar="اطلب صفحتك على واتساب" data-en="Order your page on WhatsApp">اطلب صفحتك على واتساب</a>
+      <h2 id="modalTitle" data-ar="التصميم اللي بتشوفه دلوقتي هو نموذج تجريبي من 4U celebrations، معمول عشان تاخد فكرة عن شكل الهدية." data-en="The design you see now is a prototype from 4U Celebrations, created to give you an idea of what the gift looks like.">التصميم اللي بتشوفه دلوقتي هو نموذج تجريبي من 4U celebrations، معمول عشان تاخد فكرة عن شكل الهدية.</h2>
+      <p data-ar="كل حاجة قابلة للتخصيص! الاسم والكلام والصور والموسيقى والألوان والتفاصيل كلها هتتغير حسب رغبتك." data-en="Everything is customizable! Names, text, images, music, colors, and details can all be changed to suit your preferences.">كل حاجة قابلة للتخصيص! الاسم والكلام والصور والموسيقى والألوان والتفاصيل كلها هتتغير حسب رغبتك.</p>
+      <a class="modal-order" id="modalOrderButton" href="#customizationSection" data-ar="اطلب صفحتك على واتساب" data-en="Order your page on WhatsApp">اطلب صفحتك على واتساب</a>
     </section>
   </div>
 
-  <audio id="birthdayMusic" src="birthday.mp3" loop preload="none"></audio>
+  <audio id="birthdayMusic" src="loveMusic.mp3" loop preload="none"></audio>
 
   <section class="intro" id="intro" aria-label="Introduction">
     <div class="intro-glow"></div>
@@ -77,9 +75,41 @@
         <div class="message-signature" data-ar="مع كل الحب ♡" data-en="With all the love ♡">مع كل الحب ♡</div>
       </section>
 
-      <section class="order-section" id="order">
+      <!-- CUSTOMIZATION SECTION -->
+      <section class="customization-section" id="customizationSection">
+        <p class="customization-kicker" data-ar="خلّي المفاجأة على ذوقك" data-en="Make your surprise personal">خلّي المفاجأة على ذوقك</p>
+        <h2 data-ar="اطلب تصميمك الخاص" data-en="Customize Your Surprise">اطلب تصميمك الخاص</h2>
+        <p class="customization-description" data-ar="اكتب بياناتك والتفاصيل اللي تحب نضيفها لموقعك" data-en="Enter your details and tell us what you'd like on your website">اكتب بياناتك والتفاصيل اللي تحب نضيفها لموقعك</p>
+
+        <div class="order-number-box">
+          <span data-ar="رقم طلبك" data-en="Your order number">رقم طلبك</span>
+          <strong id="orderReference"></strong>
+        </div>
+
+        <label for="husbandName" data-ar="اسم الزوج" data-en="Husband's name">اسم الزوج</label>
+        <input id="husbandName" type="text" autocomplete="off" data-placeholder-ar="اكتب اسم الزوج" data-placeholder-en="Enter husband's name" placeholder="اكتب اسم الزوج">
+
+        <label for="wifeName" data-ar="اسم الزوجة" data-en="Wife's name">اسم الزوجة</label>
+        <input id="wifeName" type="text" autocomplete="off" data-placeholder-ar="اكتب اسم الزوجة" data-placeholder-en="Enter wife's name" placeholder="اكتب اسم الزوجة">
+
+        <label for="anniversaryDate" data-ar="تاريخ ذكرى الزواج" data-en="Anniversary date">تاريخ ذكرى الزواج</label>
+        <input id="anniversaryDate" type="text" data-placeholder-ar="اكتب تاريخ ذكرى الزواج" data-placeholder-en="Enter your anniversary date" placeholder="اكتب تاريخ ذكرى الزواج">
+
+        <label for="personalMessage" data-ar="الرسالة الشخصية" data-en="Personal message">الرسالة الشخصية</label>
+        <textarea id="personalMessage" rows="4" data-placeholder-ar="اكتب الرسالة اللي تحب تضيفها للموقع..." data-placeholder-en="Write the message you'd like on the website..." placeholder="اكتب الرسالة اللي تحب تضيفها للموقع..."></textarea>
+
+        <label for="customizationDetails" data-ar="ملاحظات إضافية" data-en="Additional notes">ملاحظات إضافية</label>
+        <textarea id="customizationDetails" rows="4" data-placeholder-ar="اكتب أي تفاصيل أو أفكار إضافية..." data-placeholder-en="Write any additional details or ideas..." placeholder="اكتب أي تفاصيل أو أفكار إضافية..."></textarea>
+
+        <p class="customization-note" data-ar="لو عندك صور حابب تضيفها، ابعتها على واتساب بعد إرسال الطلب" data-en="If you have photos to include, send them on WhatsApp after placing your order">لو عندك صور حابب تضيفها، ابعتها على واتساب بعد إرسال الطلب</p>
+
+        <button type="button" class="order-button" id="copyOrderDetails" data-ar="نسخ تفاصيل الطلب" data-en="Copy order details">نسخ تفاصيل الطلب</button>
+        <button type="button" class="order-button" id="sendOrderWhatsApp" data-ar="إرسال الطلب على واتساب" data-en="Send order on WhatsApp">إرسال الطلب على واتساب</button>
+      </section>
+
+      <section class="order-section">
         <p data-ar="عايز تعمل مفاجأة بالشكل ده؟" data-en="Want to make a surprise like this?">عايز تعمل مفاجأة بالشكل ده؟</p>
-        <a class="order-button" id="orderButton" href="https://wa.me/201040275280?text=عايز%20أعمل%20صفحة%20مناسبة%20من%204U%20celebrations" target="_blank" rel="noopener noreferrer" data-ar="اطلب موقعك دلوقتي" data-en="Create your own site">اطلب موقعك دلوقتي</a>
+        <a class="order-button" id="orderButton" href="#customizationSection" data-ar="اطلب موقعك دلوقتي" data-en="Create your own site">اطلب موقعك دلوقتي</a>
       </section>
       <footer class="site-footer">made with 4U</footer>
     </div>
