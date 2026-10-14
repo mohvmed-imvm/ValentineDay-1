@@ -1312,3 +1312,127 @@ button {
     }
 }
 */
+
+/* =========================
+   CUSTOMIZATION SECTION
+   Added styles only
+========================= */
+
+.customization-section {
+    position: relative;
+    z-index: 8;
+    width: min(100%, 580px);
+    margin: 30px auto;
+    padding: 26px clamp(17px, 4vw, 30px);
+    text-align: center;
+    border: 1px solid rgba(229, 193, 138, 0.34);
+    border-radius: 24px;
+    background: linear-gradient(
+        145deg,
+        rgba(63, 20, 41, 0.96),
+        rgba(23, 9, 17, 0.97)
+    );
+    box-shadow: 0 20px 55px #0003;
+    scroll-margin-top: 100px;
+}
+
+.customization-kicker {
+    margin: 0 0 8px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+
+.customization-section h2 {
+    margin: 0 0 10px;
+    color: var(--pink);
+    font-size: clamp(25px, 5vw, 35px);
+    font-weight: 400;
+}
+
+.customization-description,
+.customization-note {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.customization-section label {
+    display: block;
+    margin: 22px 0 10px;
+    color: var(--cream);
+    text-align: start;
+    font-size: 18px;
+}
+
+.order-number-box {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    color: var(--muted);
+}
+
+.order-number-box strong {
+    color: var(--gold);
+    font-family: Arial, sans-serif;
+    direction: ltr;
+    overflow-wrap: anywhere;
+}
+
+.customization-section input,
+.customization-section textarea {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border: 1px solid rgba(241, 183, 204, 0.3);
+    border-radius: 13px;
+    outline: none;
+    background: rgba(9, 4, 8, 0.65);
+    color: var(--cream);
+    font: 16px/1.8 Arial, sans-serif;
+}
+
+.customization-section input {
+    min-height: 48px;
+}
+
+.customization-section textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.customization-section input:focus,
+.customization-section textarea:focus {
+    border-color: var(--gold);
+}
+
+.customization-section input::placeholder,
+.customization-section textarea::placeholder {
+    color: #b99aa9;
+}
+
+.customization-section .order-button {
+    margin: 7px 4px;
+    font-size: 14px;
+}
+
+.customization-note {
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+@media (max-width: 520px) {
+    .customization-section {
+        padding: 23px 16px;
+        margin-top: 24px;
+    }
+
+    .customization-section .order-button {
+        max-width: 100%;
+        white-space: normal;
+    }
+}
